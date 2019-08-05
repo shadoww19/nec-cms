@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>NEC CMS</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    body {
+      font-family: Montserrat;
+    }
+
+    .card {
+      border: 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .submitbtn {
+      font-weight: 700 !important;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="col-lg-6 card p-5" style="margin: 15em auto;">
+        <h4 style="margin-bottom: 0; padding-bottom:0;">
+          <b>NEC College Management System</b>
+        </h4>
+        <hr />
+        <form action="{% url 'login' %}" method="POST">
+          <div class="form-group">
+            <label for="exampleInputEmail1">College Id</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              name="collegeId"
+              placeholder="Enter College Id"
+            />
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              name="password"
+              id="exampleInputPassword1"
+              placeholder="Password"
+            />
+          </div>
+          <button type="submit" class="submitbtn btn btn-primary">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

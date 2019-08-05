@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>NEC CMS</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    body {
+      font-family: Montserrat;
+    }
+
+    .card {
+      border: 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .submitbtn {
+      font-weight: 700 !important;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="card p-3" style="margin: 2em auto;">
+        <h4 style="margin-bottom: 0; padding-bottom:0;">
+          <b>NEC Faculty</b>
+          <button class="btn btn-danger" style="float: right;">Logout</button>
+        </h4>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card p-3">
+            Name: {{ user.name }}
+            <br>
+            Email: {{ user.email }}
+            <br>
+            College ID: {{ user.collegeId }}
+          </div>
+        </div>
+
+        <div class="col-lg-8">
+          <div class="card p-3">
+            marks
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

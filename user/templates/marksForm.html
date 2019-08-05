@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>NEC CMS</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    body {
+      font-family: Montserrat;
+    }
+
+    .card {
+      border: 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .submitbtn {
+      font-weight: 700 !important;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="row" style="margin-top: 15em;">
+        <div class="col-lg-6">
+          <div class="card p-4">
+            <h4 style="margin-bottom: 0; padding-bottom:0;">
+              <b>Student Information</b>
+            </h4>
+            <hr />
+            <form action="" method="POST">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  name="name"
+                  value="{{ student.name }}"
+                  disabled
+                  placeholder="Enter name"
+                />
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input
+                  disabled
+                  name="email"
+                  value="{{ student.email }}"
+                  type="email"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter email"
+                />
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">College Id</label>
+                <input
+                  disabled
+                  name="collegeId"
+                  type="text"
+                  value="{{ student.collegeId }}"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter email"
+                />
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card p-4">
+            <h4 style="margin-bottom: 0; padding-bottom:0;">
+              <b>Enter Marks</b>
+            </h4>
+            <hr />
+            <form action="" method="POST">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Subject 1</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  name="Subject 1"
+                  value="{{ student.name }}"
+                  placeholder="Enter marks"
+                />
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Subject 2</label>
+                <input
+                  name="Subject 2"
+                  value="{{ student.email }}"
+                  type="number"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter marks"
+                />
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Subject 3</label>
+                <input
+                  name="Subject 3"
+                  type="number"
+                  value="{{ student.collegeId }}"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter marks"
+                />
+              </div>
+
+              <button type="submit" class="submitbtn btn btn-primary">
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
