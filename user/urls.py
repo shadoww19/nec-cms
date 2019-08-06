@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from user.views import login, logout, register, hod_dashboard, teacher_dashboard, student_dashboard, enter_marks, get_students, get_student, add_marks, edit_marks
+from user.views import login, logout, register, hod_dashboard, teacher_dashboard, student_dashboard, enter_marks, get_students, get_student, add_marks, edit_marks, get_teachers
 
 urlpatterns = [
     url(r'^login/$', login, name="login"),
@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'^dashboard/teacher/students/details/$',get_student, name='student_details'),
     url(r'^dashboard/students/add_marks/$', add_marks, name='add_marks'),
     url(r'^dashboard/students/edit_marks/$', edit_marks, name='edit_marks'),
+    url(r'^dashboard/hod/teachers/$',get_teachers, name='teacher_list')    
 ]

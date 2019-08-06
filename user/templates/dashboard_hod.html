@@ -29,6 +29,15 @@
     .submitbtn {
       font-weight: 700 !important;
     }
+
+    .btn {
+      font-weight: 700 !important;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .stats {
+      border: 4px solid steelblue;
+    }
   </style>
   <body>
     <div class="container">
@@ -36,7 +45,9 @@
         <h4 style="margin-bottom: 0; padding-bottom:0;">
           <b>NEC HOD</b>
           <!-- <button class="btn btn-danger" style="float: right;">Logout</button> -->
-          <a href="/user/logout" class="btn btn-danger" style="float: right;">Logout</a>
+          <a href="/user/logout" class="btn btn-danger" style="float: right;"
+            >Logout</a
+          >
         </h4>
       </div>
 
@@ -44,16 +55,53 @@
         <div class="col-lg-4">
           <div class="card p-3">
             Name: {{ user.name }}
-            <br>
+            <br />
             Email: {{ user.email }}
-            <br>
+            <br />
             College ID: {{ user.collegeId }}
           </div>
+          <br />
+          <a href="/user/dashboard/hod/teachers" class="mb-2 col-12 btn btn-primary">
+            Faculty
+          </a>
+          <a href="/user/dashboard/teacher/students" class="col-12 btn btn-info">
+            Students
+          </a>
         </div>
 
         <div class="col-lg-8">
           <div class="card p-3">
-            marks
+            <h3 style="margin-bottom:0; padding-bottom: 0;">
+              <b>Welcome, {{ user.name }}</b>
+            </h3>
+            <hr>
+            <h5><b>Your Attendance</b></h5>
+            Present: 15<br>
+            Leaves: 3<br>
+            Total: 18
+            <br><br>
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="card stats p-3">
+                  <h2>24</h2>
+                  Teachers
+                </div>
+              </div>
+
+              <div class="col-lg-4">
+                <div class="card stats p-3">
+                  <h2>1500</h2>
+                  Students
+                </div>
+              </div>
+
+              <div class="col-lg-4">
+                <div class="card stats p-3">
+                  <h2>2</h2>
+                  Notifications
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -32,7 +32,10 @@
   </style>
   <body>
     <div class="container">
-      <form action="/user/dashboard/students/add_marks/?collegeId={{student.collegeId}}" method="POST">
+      <form
+        action="/user/dashboard/students/edit_marks/?collegeId={{student.collegeId}}"
+        method="POST"
+      >
         <div class="row" style="margin-top: 15em;">
           <div class="col-lg-6">
             <div class="card p-4">
@@ -83,11 +86,11 @@
               <div class="form-group">
                 <label for="exampleInputEmail1">Subject 1</label>
                 <input
+                  value="{{ student.subjects.subject1 }}"
                   type="number"
                   class="form-control"
                   id="exampleInputEmail1"
                   name="subject1"
-                  
                   placeholder="Enter marks"
                 />
               </div>
@@ -95,6 +98,7 @@
                 <label for="exampleInputEmail1">Subject 2</label>
                 <input
                   name="subject2"
+                  value="{{ student.subjects.subject2 }}"
                   type="number"
                   class="form-control"
                   id="exampleInputEmail1"
@@ -107,6 +111,7 @@
                 <input
                   name="subject3"
                   type="number"
+                  value="{{ student.subjects.subject3 }}"
                   class="form-control"
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"

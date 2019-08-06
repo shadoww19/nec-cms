@@ -29,6 +29,15 @@
     .submitbtn {
       font-weight: 700 !important;
     }
+
+    .btn {
+      font-weight: 700 !important;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .stats {
+      border: 4px solid steelblue;
+    }
   </style>
   <body>
     <div class="container">
@@ -49,14 +58,23 @@
             <br>
             College ID: {{ user.collegeId }}
           </div>
-          <a href="/user/dashboard/teacher/students/" class="submitbtn btn btn-primary col-12 mt-3">
+          <!-- <a href="/user/dashboard/teacher/students/" class="submitbtn btn btn-primary col-12 mt-3">
               Students
-          </a>
+          </a> -->
         </div>
 
         <div class="col-lg-8">
           <div class="card p-3">
-            marks
+            <h2><b>Welcome, {{user.name}}</b></h2>
+            <div class="row col-12">
+              <a href="/user/dashboard/teacher/students/" class="submitbtn btn btn-primary col-3 mt-3 mr-3">
+                Students
+              </a>
+
+              <a href="" class="submitbtn btn btn-dark col-3 mt-3">
+                More options
+              </a>
+            </div>
           </div>
         </div>
       </div>
