@@ -11,6 +11,7 @@ def login(request):
             collegeId = form.cleaned_data['collegeId']
             password = form.cleaned_data['password']
             userList = User.objects.filter(collegeId = collegeId, password = password).values()
+            query = User.objects.filter(collegeId = collegeId).update(isLoggedIn = 1)
             user = list(userList)[0]
             if user['role'] == 'hod':
                 print(user)
@@ -22,6 +23,12 @@ def login(request):
                 # return HttpResponseRedirect('/user/dashboard/student')
     elif request.method == 'GET':
         return render(request, 'login.html')
+
+def logout(request):
+    if request.method == 'GET':
+        collegeId = request.GET.get('collegeId')
+        query = User.objects.filter(collegeId = collegeId).update(isLoggedIn=0)
+        return HttpResponseRedirect("/user/login")
 
 def register(request):
     if request.method == 'POST':
