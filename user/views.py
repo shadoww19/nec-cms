@@ -13,9 +13,10 @@ def login(request):
             userList = User.objects.filter(collegeId = collegeId, password = password).values()
             user = list(userList)[0]
             if user['role'] == 'hod':
-                return HttpResponseRedirect('/user/dashboard/hod')
+                print(user)
+                return HttpResponseRedirect('/user/dashboard/hod', {"user": user})
             elif user['role'] == 'teacher':
-                return HttpResponseRedirect('/user/dashboard/teacher')
+                return HttpResponseRedirect('/user/dashboard/teacher', {"user": user})
             elif user['role'] == 'student':
                 return render(request, 'dashboard_student.html', {"user":user})
                 # return HttpResponseRedirect('/user/dashboard/student')
@@ -59,4 +60,70 @@ def student_dashboard(request):
 
 def enter_marks(request):
     if request.method == 'GET':
-        return render(request, 'marksForm.html')        
+        return render(request, 'marksForm.html')   
+
+def get_students(request):
+    if request.method == 'GET':
+        studentquery = User.objects.filter(role='student').values()
+        students = list(studentquery)
+        return render(request, 'student_list.html', {"students": students})
+
+def get_student(request):
+    if request.method == 'GET':
+        collegeId = request.GET.get('collegeId')
+        query = User.objects.filter(collegeId=collegeId).values()
+        student = list(query)[0]
+        q = User.objects.get(collegeId = student['collegeId'])
+        query1 = Marks.objects.filter(student = q).values()
+        if len(list(query1)) == 0:
+            subjects = []
+            marks= 0
+            percent = 0
+        else:
+            subjects = list(query1)[0]
+            marks = subjects['subject1'] + subjects['subject2'] + subjects['subject3']
+            percent = (marks / 300) * 100
+        student = {"name": student['name'], "email": student['email'], "collegeId": student['collegeId'], "marks": marks, "percent": percent, "subjects": subjects}
+        return render(request, 'student_details.html', {"student": student})
+
+def add_marks(request):
+    if request.method == 'GET':
+        collegeId = request.GET.get('collegeId')
+        query = User.objects.filter(collegeId=collegeId).values()
+        student = list(query)[0]
+        return render(request, 'marksForm.html', {"student": student})
+    elif request.method == 'POST':
+        form = MarksForm(request.POST)
+        print(request.body)
+        if form.is_valid():
+            subject1 = form.cleaned_data['subject1']
+            subject2 = form.cleaned_data['subject2']
+            subject3 = form.cleaned_data['subject3']
+            collegeId = request.GET.get('collegeId')
+            student = User.objects.get(collegeId = collegeId)
+            query = Marks.objects.create(subject1 = subject1, subject2 = subject2, subject3 = subject3, student = student)
+            return HttpResponseRedirect('/user/dashboard/teacher/students')
+
+def edit_marks(request):
+    if request.method == 'GET':
+        collegeId = request.GET.get('collegeId')
+        query = User.objects.filter(collegeId=collegeId).values()
+        student = list(query)[0]
+        q = User.objects.get(collegeId = student['collegeId'])
+        query1 = Marks.objects.filter(student = q).values()
+        subjects = list(query1)[0]
+        # marks = subjects['subject1'] + subjects['subject2'] + subjects['subject3']
+        # percent = (marks / 300) * 100
+        student = {"name": student['name'], "email": student['email'], "collegeId": student['collegeId'], "subjects": subjects}
+        return render(request, 'marksForm.html', {"student": student})
+    elif request.method == 'POST':
+        form = MarksForm(request.POST)
+        print(request.body)
+        if form.is_valid():
+            subject1 = form.cleaned_data['subject1']
+            subject2 = form.cleaned_data['subject2']
+            subject3 = form.cleaned_data['subject3']
+            collegeId = request.GET.get('collegeId')
+            student = User.objects.get(collegeId = collegeId)
+            query = Marks.objects.create(subject1 = subject1, subject2 = subject2, subject3 = subject3, student = student)
+            return HttpResponseRedirect('/user/dashboard/teacher/students')

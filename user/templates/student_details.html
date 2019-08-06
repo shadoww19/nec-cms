@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>NEC CMS</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    body {
+      font-family: Montserrat;
+    }
+
+    .card {
+      border: 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .submitbtn {
+      font-weight: 700 !important;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="card p-3" style="margin: 2em auto;">
+        <h4 style="margin-bottom: 0; padding-bottom:0;">
+          <b>NEC Faculty</b>
+          <button class="btn btn-danger" style="float: right;">Logout</button>
+        </h4>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card p-3">
+            Name: {{ user.name }}
+            <br />
+            Email: {{ user.email }}
+            <br />
+            College ID: {{ user.collegeId }}
+          </div>
+          <!-- <a href="" class="submitbtn btn btn-primary col-12 mt-3">
+              Students
+          </a> -->
+        </div>
+
+        <div class="col-lg-8">
+          <div class="card p-3">
+            <h4><b>Student Details</b></h4>
+            <!-- <h4><b>Students</b></h4> -->
+            <div class="row">
+              <div class="col-lg-6">Name: {{ student.name }}</div>
+              <div class="col-lg-6">Email: {{ student.email }}</div>
+              <div class="col-lg-6">College Id: {{ student.collegeId }}</div>
+            </div>
+
+            <br />
+            <h4><b>Marks</b></h4>
+
+            {% if student.subjects.subject1 == null or student.subjects.subject1 == undefined %}
+                No marks submitted
+                <br>
+                <div class="row col-lg-6">
+                    <a href="/user/dashboard/students/add_marks/?collegeId={{ student.collegeId }}" class="btn btn-primary">Add Marks</a>
+                </div>
+            {% else %}
+                <div class="row">
+                    <div class="col-lg-6">
+                        <b>Subject 1:</b> {{ student.subjects.subject1 }}
+                    </div>
+                    <div class="col-lg-6">
+                        <b>Subject 2:</b> {{ student.subjects.subject2 }}
+                    </div>
+                    <div class="col-lg-6">
+                        <b>Subject 3:</b> {{ student.subjects.subject3 }}
+                    </div>
+                    <br><br>
+                    <div class="col-lg-12">
+                        <b>Total Marks:</b> {{ student.marks }}
+                    </div>
+                    <div class="col-lg-12">
+                        <b>Percentage:</b> {{ student.percent }}
+                    </div>
+                </div>
+                <br>
+                <div class="row col-lg-6">
+                    <a href="/user/dashboard/students/edit_marks/?collegeId={{ student.collegeId }}" class="btn btn-info">Edit Marks</a>
+                </div>
+            {% endif %}
+
+            <br />
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
